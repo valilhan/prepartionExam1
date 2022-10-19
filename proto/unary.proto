@@ -1,0 +1,21 @@
+syntax = 'proto3';
+package proto;
+service QueueService {
+  rpc put(newElement) returns (Received);
+  rpc pick(Empty) returns (newElement);
+  rpc pop(Empty) returns (newElement);
+  rpc size(Empty) returns (Size);
+}
+
+message Size {
+  int64 size = 1;
+}
+message Empty {
+  bool send = 1;
+}
+message newElement {
+  string element = 1;
+}
+message Received {
+  bool received = 1;
+}
